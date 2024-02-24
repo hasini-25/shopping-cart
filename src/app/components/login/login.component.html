@@ -1,0 +1,24 @@
+<div class="d-flex align-items-center h-100">
+    <div class="login-container">
+        <h2>Login</h2>
+        <form (ngSubmit)="onSubmit()">
+            <div class="input-group flex-nowrap m-2">
+                <span class="input-group-text" id="addon-wrapping">
+                    <img src="../../../assets/images/user.svg" alt="username" />
+                </span>
+                <input type="text" name="username" class="form-control" placeholder="Username" [(ngModel)]="username"
+                    aria-label="Username" aria-describedby="addon-wrapping" [ngModelOptions]="{ standalone: true }">
+            </div>
+            <div class="input-group flex-nowrap m-2">
+                <span class="input-group-text" id="addon-wrapping">
+                    <img src="../../../assets/images/password.svg" alt="password" />
+                </span>
+                <input type="password" name="password" class="form-control" placeholder="Password"
+                    [(ngModel)]="password" aria-label="Password" aria-describedby="addon-wrapping"
+                    [ngModelOptions]="{ standalone: true }">
+            </div>
+            <p class="invalid">{{errorMessage}}</p>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
