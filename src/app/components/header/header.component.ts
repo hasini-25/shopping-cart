@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ProductService } from 'src/app/services/product/product.service';
 
 @Component({
   selector: 'app-header',
@@ -6,16 +7,19 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  categories!: string[];
-  filteredProducts!: any[];
-  @Input() products!: any[];
+  @Input() categories!: string[];
   @Input() cartAdd: number = 0;
+  @Input() products!: any[];
+  @Output() filteredProducts = new EventEmitter<any>();
+
+  constructor(private productService: ProductService) { }
 
   filterByCategory(category: string): void {
     if (category === 'all') {
-      this.filteredProducts = this.products;
+      this.filteredProducts.emit(this.products);
     } else {
-      this.filteredProducts = this.products.filter(product => product.category === category);
+      this.filteredProducts.emit(this.products.filter(product => product.category === category));
     }
   }
+
 }

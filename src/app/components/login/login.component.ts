@@ -18,7 +18,7 @@ export class LoginComponent {
     this.authService.login(this.username, this.password)
       .subscribe((authenticated: boolean) => {
         if (authenticated) {
-          this.router.navigate(['/products']);
+          this.router.navigate(['/product-page']);
         } else {
           this.errorMessage = 'Invalid username or password';
         }
